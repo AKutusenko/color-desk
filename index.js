@@ -1,24 +1,25 @@
 const elements = {
   board: document.querySelector("#board"),
-  checkbox: document.querySelector(".checkbox"),
+  checkbox: document.querySelector("#checkbox"),
 };
-const SQUARES_NUMBER = 102;
+const SQUARES_COUNT = 102;
 
-for (let i = 0; i < SQUARES_NUMBER; i++) {
+for (let i = 0; i < SQUARES_COUNT; i++) {
   const square = document.createElement("div");
   square.classList.add("square");
   elements.board.append(square);
-  square.addEventListener("mouseover", () => makeMagic(square));
-  square.addEventListener("mouseleave", () => removeColor(square));
+  square.addEventListener("mouseover", makeMagic);
+  square.addEventListener("mouseleave", removeColor);
 }
 
-function makeMagic(element) {
+function makeMagic(e) {
+  const currentSquare = e.target;
   const isSound = elements.checkbox.checked;
-  const number = randomNumber();
-  setColor(element, number);
-  if (isSound) playSound(number);
+  const idx = randomNumber();
+  setColor(currentSquare, idx);
+  if (isSound) playSound(idx);
 }
-function setColor(element, number) {
+function setColor(element, idx) {
   const colors = [
     "#FF0000",
     "#FFA500",
@@ -28,13 +29,13 @@ function setColor(element, number) {
     "#000080",
     "#800080",
   ];
-  const color = colors[number];
+  const color = colors[idx];
   element.style.background = color;
   element.style.boxShadow = `0 0 10px ${color}, 0 0 10px ${color}`;
 }
-function removeColor(element) {
-  element.style.background = "#1d1d1d";
-  element.style.boxShadow = `0 0 2px #000`;
+function removeColor(e) {
+  e.target.style.background = "#1d1d1d";
+  e.target.style.boxShadow = `0 0 2px #000`;
 }
 function playSound(number) {
   const soundsSrc = [

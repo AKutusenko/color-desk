@@ -43,6 +43,7 @@ body {
 
 .square:hover {
   transition-duration: 0ms;
+  transform: rotate(360deg);
 }
 
 .checkbox {

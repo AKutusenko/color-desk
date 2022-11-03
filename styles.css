@@ -38,7 +38,7 @@ body {
   background: #1d1d1d;
   margin: 2px;
   box-shadow: 0 0 2px black;
-  transition: 2000ms ease;
+  transition: 2500ms ease;
 }
 
 .square:hover {
@@ -46,7 +46,7 @@ body {
   transform: rotate(360deg);
 }
 
-.checkbox {
+#checkbox {
   width: 50px;
   height: 50px;
   margin-right: 20px;
@@ -61,7 +61,7 @@ body {
   height: 120px;
 }
 
-.wrapper p {
+.wrapper label {
   color: #f0f8ff;
   font-size: 55px;
 }
